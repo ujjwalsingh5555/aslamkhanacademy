@@ -1,0 +1,8 @@
+# Keep the build context tiny + the web root clean (we COPY only *.html + assets/).
+.git
+.gitignore
+README.md
+Dockerfile
+.dockerignore
+docker-compose*.yml
+deploy.manifest.yml

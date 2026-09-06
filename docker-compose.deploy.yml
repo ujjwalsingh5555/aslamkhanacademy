@@ -1,0 +1,28 @@
+# Deploy-time compose for aslamkhanacademy — consumed by the vps-deploy-framework.
+# One static-file server (nginx). No DB, no env, no host ports — the shared edge proxy
+# reaches it by container name over app-network and terminates TLS.
+name: aslamkhanacademy
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: aslamkhanacademy-web:local
+    container_name: aslamkhanacademy-web   # UNIQUE, app-prefixed — the edge proxy targets this
+    restart: always
+    networks: [app-network]
+    healthcheck:
+      test: ['CMD-SHELL', 'wget -qO- http://127.0.0.1/ >/dev/null 2>&1 || exit 1']
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    logging:
+      driver: json-file
+      options: { max-size: '20m', max-file: '5' }
+
+networks:
+  app-network:
+    external: true
+    name: app-network
