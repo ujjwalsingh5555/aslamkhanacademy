@@ -1,0 +1,52 @@
+# =============================================================================
+# deploy.manifest.yml — deploy CONTRACT for aslamkhanacademy (this fuller build).
+# A pure static marketing site (plain HTML + assets + SEO pages), served by nginx.
+# No database, no secrets, no build/env — files on :80 behind the shared edge proxy.
+# Same repo/domain as the ~/mukul/aslamkhanacademy dir; this build has the full SEO set.
+# =============================================================================
+apiVersion: v1
+
+app:
+  name: aslamkhanacademy
+  description: Aslam Khan Academy — static marketing website + SEO pages (nginx).
+
+repo:
+  url: https://github.com/ujjwalsingh5555/aslamkhanacademy.git
+  branch: main
+
+compose:
+  base: docker-compose.deploy.yml
+
+routes:
+  - domain: aslamkhanacademy.com    # → the shared edge proxy → aslamkhanacademy-web:80
+    service: web
+    port: 80
+
+tls:
+  mode: letsencrypt
+  email: sujjwalsingh5555@gmail.com   # renewal notices
+
+# No database — 'none' skips all datastore provisioning.
+datastore:
+  postgres:
+    mode: none
+
+lifecycle:
+  health:
+    - service: web
+      path: /
+      port: 80
+
+# Static files tolerate a high steady rate; the edge proxy still caps bursts.
+rate_limit:
+  enabled: true
+  rate: 50r/s
+  burst: 100
+  status: 429
+
+ip_ban:
+  enabled: false
+
+real_ip:
+  enabled: false
+  provider: cloudflare
