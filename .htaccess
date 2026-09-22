@@ -1,0 +1,18 @@
+RewriteEngine On
+
+# Canonical local SEO clusters - server-side 301 redirects for legacy keyword-variant pages.
+# Keep the SEO hub and template directory untouched.
+RewriteCond %{REQUEST_URI} !^/seo/index\.html$ [NC]
+RewriteCond %{REQUEST_URI} !^/seo/_templates/ [NC]
+RewriteCond %{REQUEST_URI} ^/seo/.*data-analyst.*\.html$ [NC]
+RewriteRule ^seo/.*$ /seo/varanasi/data-analytics/ [R=301,L]
+
+RewriteCond %{REQUEST_URI} !^/seo/index\.html$ [NC]
+RewriteCond %{REQUEST_URI} !^/seo/_templates/ [NC]
+RewriteCond %{REQUEST_URI} ^/seo/.*(web|website).*\.html$ [NC]
+RewriteRule ^seo/.*$ /seo/varanasi/web-development/ [R=301,L]
+
+RewriteCond %{REQUEST_URI} !^/seo/index\.html$ [NC]
+RewriteCond %{REQUEST_URI} !^/seo/_templates/ [NC]
+RewriteCond %{REQUEST_URI} ^/seo/.*\.html$ [NC]
+RewriteRule ^seo/.*$ /seo/varanasi/it-training/ [R=301,L]

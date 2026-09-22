@@ -1,0 +1,26 @@
+[
+  {
+    "url": "/seo/varanasi/web-development/",
+    "primary_keyword": "Web Development Training in Varanasi",
+    "topic_cluster": "web-development",
+    "search_intent": "local-course",
+    "canonical": "https://aslamkhanacademy.com/seo/varanasi/web-development/",
+    "index_status": "index"
+  },
+  {
+    "url": "/seo/varanasi/data-analytics/",
+    "primary_keyword": "Data Analytics Training in Varanasi",
+    "topic_cluster": "data-analytics",
+    "search_intent": "local-course",
+    "canonical": "https://aslamkhanacademy.com/seo/varanasi/data-analytics/",
+    "index_status": "index"
+  },
+  {
+    "url": "/seo/varanasi/it-training/",
+    "primary_keyword": "IT Training Institute in Varanasi",
+    "topic_cluster": "it-training",
+    "search_intent": "local-category",
+    "canonical": "https://aslamkhanacademy.com/seo/varanasi/it-training/",
+    "index_status": "index"
+  }
+]

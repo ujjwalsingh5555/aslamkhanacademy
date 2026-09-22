@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /seo/_templates/
+
+Sitemap: https://aslamkhanacademy.com/sitemap.xml
